@@ -1,4 +1,4 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) General Assembly - Data Science Immersive: Project 3 - Regression and classification with housing data
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 3: Regression and classification with housing data
 
 ## Business Case
 
@@ -43,3 +43,5 @@ We will be looking for the following things:
     - Plot, visualize, and interpret your data logically.
     - Clearly outline your modeling strategy in response to the questions
     - Explain your results to a technical audience.
+
+---
