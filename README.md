@@ -12,4 +12,4 @@ This is a repository for the General Assembly Data Science Immersive Course.
 4. [Project 4 - Web Scraping Job Postings](https://github.com/samdarmali/GA-DSI-6/blob/master/GA_Project_4/project_4_v3.ipynb)
 
 ### Capstones
-1. Video Game Recommender System (in progress)
+1. [Video Game Recommender System](https://github.com/samdarmali/GA-DSI-6/tree/master/VGRecommender)
