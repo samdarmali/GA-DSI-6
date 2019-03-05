@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Egames - Index Page</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href={{ url_for('static', filename="style.css") }}>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area wow fadeInDown" data-wow-delay="500ms">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Logo Area -->
+                        <div class="logo">
+                            <a href="index.html"><img src={{ url_for('static', filename="img/core-img/logo.png") }} alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="egames-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="egamesNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="best-sellers.html">Games</a>
+                                        <ul class="dropdown">
+                                            <li><a href="best-sellers.html">Best Sellers</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Hero Area Start ##### -->
+    <div class="hero-area">
+        <!-- Hero Post Slides -->
+        <div class="hero-post-slides owl-carousel">
+
+            <!-- Single Slide -->
+            <div class="single-slide bg-img bg-overlay" style="background-image: url({{ url_for('static', filename='img/bg-img/trial_1.jpg') }});">
+                <!-- Blog Content -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
+                                <h2 data-animation="fadeInUp" data-delay="400ms">What?</h2>
+                                <p data-animation="fadeInUp" data-delay="700ms">This is mock online marketplace for video games is part of my deployment phase for my Capstone Project at General Assembly: Data Science Immersive.</p>
+                                <p><a href="best-sellers.html">View Project on Github</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Slide -->
+            <div class="single-slide bg-img bg-overlay" style="background-image: url({{ url_for('static', filename='img/bg-img/trial_2.jpg') }});">
+                <!-- Blog Content -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
+                                <h2 data-animation="fadeInUp" data-delay="400ms">Why?</h2>
+                                <p data-animation="fadeInUp" data-delay="700ms">Recommender systems are essential for any e-commerce business as they help customers discover new products and enhance the consumer experience, which in turn leads to higher conversion rates and business growth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Slide -->
+            <div class="single-slide bg-img bg-overlay" style="background-image: url({{ url_for('static', filename='img/bg-img/1.jpg') }});">
+                <!-- Blog Content -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
+                                <h2 data-animation="fadeInUp" data-delay="400ms">How?</h2>
+                                <p data-animation="fadeInUp" data-delay="700ms">Simply click on the 'Games' tab above, or view the games in store by category below. Select games by clicking the checkbox and click on 'Submit' when you are done.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Slide -->
+            <div class="single-slide bg-img bg-overlay" style="background-image: url({{ url_for('static', filename='img/bg-img/2.jpg') }});">
+                <!-- Blog Content -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
+                                <h2 data-animation="fadeInUp" data-delay="400ms">God of War</h2>
+                                <p data-animation="fadeInUp" data-delay="700ms">Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ##### Hero Area End ##### -->
+
+    <!-- ##### Games Area Start ##### -->
+    <div class="games-area section-padding-100-0">
+        <div class="container">
+            <div class="row">
+                <!-- Single Games Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
+                        <img src={{ url_for('static', filename="img/bg-img/game1.jpg") }} alt="">
+                        <a href="#" class="btn egames-btn mt-30">View Games</a>
+                    </div>
+                </div>
+
+                <!-- Single Games Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="300ms">
+                        <img src={{ url_for('static', filename="img/bg-img/game2.jpg") }} alt="">
+                        <a href="#" class="btn egames-btn mt-30">View Games</a>
+                    </div>
+                </div>
+
+                <!-- Single Games Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
+                        <img src={{ url_for('static', filename="img/bg-img/game3.jpg") }} alt="">
+                        <a href="#" class="btn egames-btn mt-30">View Games</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Games Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <!-- Copywrite Area -->
+        <div class="copywrite-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 col-sm-5">
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                    </div>
+                    <div class="col-12 col-sm-7">
+                        <!-- Footer Nav -->
+                        <div class="footer-nav">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="game-review.html">Games</a></li>
+                                <li><a href="post.html">Articles</a></li>
+                                <li><a href="single-game-review.html">Reviews</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src={{ url_for('static', filename="js/jquery/jquery-2.2.4.min.js") }}></script>
+    <!-- Popper js -->
+    <script src={{ url_for('static', filename="js/bootstrap/popper.min.js") }}></script>
+    <!-- Bootstrap js -->
+    <script src={{ url_for('static', filename="js/bootstrap/bootstrap.min.js") }}></script>
+    <!-- All Plugins js -->
+    <script src={{ url_for('static', filename="js/plugins/plugins.js") }}></script>
+    <!-- Active js -->
+    <script src={{ url_for('static', filename="js/active.js") }}></script>
+</body>
+
+</html>

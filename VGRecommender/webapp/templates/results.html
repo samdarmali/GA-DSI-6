@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<!-- Title -->
+	<title>Results Page</title>
+
+	<!-- Favicon -->
+	<link rel="icon" href="img/core-img/favicon.ico">
+
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href={{ url_for('static', filename="style.css") }}>
+
+</head>
+<body>
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+			<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+			</div>
+	</div>
+
+	<!-- ##### Header Area Start ##### -->
+	<header class="header-area wow fadeInDown" data-wow-delay="500ms">
+			<!-- Top Header Area -->
+			<div class="top-header-area">
+					<div class="container h-100">
+							<div class="row h-100 align-items-center">
+									<div class="col-12 d-flex align-items-center justify-content-between">
+											<!-- Logo Area -->
+											<div class="logo">
+													<a href="/"><img src={{ url_for('static', filename="img/core-img/logo.png") }} alt=""></a>
+											</div>
+
+											<!-- Search & Login Area -->
+											<div class="search-login-area d-flex align-items-center">
+													<!-- Top Search Area -->
+													<div class="top-search-area">
+															<form action="#" method="post">
+																	<input type="search" name="top-search" id="topSearch" placeholder="Search">
+																	<button type="submit" class="btn"><i class="fa fa-search"></i></button>
+															</form>
+													</div>
+													<!-- Login Area -->
+													<div class="login-area">
+															<a href="#"><span>Login / Register</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+													</div>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
+
+			<!-- Navbar Area -->
+			<div class="egames-main-menu" id="sticker">
+					<div class="classy-nav-container breakpoint-off">
+							<div class="container">
+									<!-- Menu -->
+									<nav class="classy-navbar justify-content-between" id="egamesNav">
+
+											<!-- Navbar Toggler -->
+											<div class="classy-navbar-toggler">
+													<span class="navbarToggler"><span></span><span></span><span></span></span>
+											</div>
+
+											<!-- Menu -->
+											<div class="classy-menu">
+
+													<!-- Close Button -->
+													<div class="classycloseIcon">
+															<div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+													</div>
+
+													<!-- Nav Start -->
+													<div class="classynav">
+															<ul>
+																	<li><a href="/">Home</a></li>
+																	<li><a href="/best-sellers.html">Games</a>
+																			<ul class="dropdown">
+																					<li><a href="/best-sellers.html">Best Sellers</a></li>
+																					<li><a href="/best-sellers.html">2015</a></li>
+																					<li><a href="/best-sellers.html">2014</a></li>
+																					<li><a href="/best-sellers.html">2013</a></li>
+																					<li><a href="/best-sellers.html">2012</a></li>
+																			</ul>
+																	</li>
+																	<li><a href="contact.html">Contact</a></li>
+															</ul>
+													</div>
+													<!-- Nav End -->
+											</div>
+									</nav>
+							</div>
+					</div>
+			</div>
+	</header>
+	<!-- ##### Header Area End ##### -->
+
+	<!-- ##### Breadcrumb Area Start ##### -->
+	<div class="breadcrumb-area bg-img bg-overlay" style="background-image: url({{ url_for('static', filename='img/bg-img/27.jpg') }});">
+			<div class="container h-100">
+					<div class="row h-100 align-items-center">
+							<!-- Breadcrumb Text -->
+							<div class="col-12">
+									<div class="breadcrumb-text">
+											<h2>Your Recommendations</h2>
+									</div>
+							</div>
+					</div>
+			</div>
+	</div>
+	<!-- ##### Breadcrumb Area End ##### -->
+
+	<!--  ##### Recommendations Area #####  -->
+	<div class="col-12">
+		<h2>Thank you for purchasing:</h2>
+			<div class="row">
+					{% for data in selected_list %}
+					<div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+							<div class="card h-100 mb-5" style="margin:5px; padding:5px;">
+									<img class="card-img-top align-items center" src={{ data[3] }} style="height:250px; width:200px;"></img>
+									<div class="card-body">
+											<h6 class="product_title">{{ data[1] }}</h6>
+											<h7 class="price">S${{ data[2] }}</h7>
+											<span class="text-warning"></span>
+									</div>
+									<div class="card-footer">
+											<small class="text-muted">{{ data[4] }} Reviews</small>
+									</div>
+							</div>
+					</div>
+					{% endfor %}
+			</div>
+
+		<h2>Based on your purchases, we recommend:</h2>
+			<div class="row">
+					{% for data in recommended_list %}
+					<div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+							<div class="card h-100 mb-5" style="margin:5px; padding:5px;">
+									<img class="card-img-top align-items center" src={{ data[3] }} style="height:250px; width:200px;"></img>
+									<div class="card-body">
+											<h6 class="product_title">{{ data[1] }}</h6>
+											<h7 class="price">S${{ data[2] }}</h7>
+											<span class="text-warning"></span>
+									</div>
+									<div class="card-footer">
+											<small class="text-muted">{{ data[4] }} Reviews</small>
+									</div>
+							</div>
+					</div>
+					{% endfor %}
+			</div>
+		</div>
+<!--  ##### Recommendations Area End #####  -->
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area">
+		<!-- Copywrite Area -->
+		<div class="copywrite-content">
+				<div class="container h-100">
+						<div class="row h-100 align-items-center">
+								<div class="col-12 col-sm-5">
+										<!-- Copywrite Text -->
+										<p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+								</div>
+								<div class="col-12 col-sm-7">
+										<!-- Footer Nav -->
+										<div class="footer-nav">
+												<ul>
+														<li><a href="index.html">Home</a></li>
+														<li><a href="game-review.html">Games</a></li>
+														<li><a href="post.html">Articles</a></li>
+														<li><a href="single-game-review.html">Reviews</a></li>
+														<li><a href="contact.html">Contact</a></li>
+												</ul>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</footer>
+<!-- ##### Footer Area End ##### -->
+
+<!-- ##### All Javascript Script ##### -->
+<!-- jQuery-2.2.4 js -->
+<script src={{ url_for('static', filename="js/jquery/jquery-2.2.4.min.js") }}></script>
+<!-- Popper js -->
+<script src={{ url_for('static', filename="js/bootstrap/popper.min.js") }}></script>
+<!-- Bootstrap js -->
+<script src={{ url_for('static', filename="js/bootstrap/bootstrap.min.js") }}></script>
+<!-- All Plugins js -->
+<script src={{ url_for('static', filename="js/plugins/plugins.js") }}></script>
+<!-- Active js -->
+<script src={{ url_for('static', filename="js/active.js") }}></script>
+
+</body>
+</html>
