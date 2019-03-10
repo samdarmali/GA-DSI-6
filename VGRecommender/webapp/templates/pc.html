@@ -8,7 +8,7 @@
 	<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<!-- Title -->
-	<title>Best Sellers Page</title>
+	<title>PC Page</title>
 
 	<!-- Favicon -->
 	<link rel="icon" href={{ url_for('static', filename="img/core-img/logo.ico") }}>
@@ -99,7 +99,7 @@
 							<!-- Breadcrumb Text -->
 							<div class="col-12">
 									<div class="breadcrumb-text">
-											<h2>Best Sellers</h2>
+											<h2>PC</h2>
 									</div>
 							</div>
 					</div>
@@ -118,8 +118,7 @@
 									<img class="card-img-top align-items center" src={{ data[3] }} style="height:250px; width:200px;"></img>
 									<div class="card-body">
 											<h6 class="product_title">{{ data[1] }}</h6>
-											<h7 class="platform">Platform: {{ data[4] }}</h7>
-											<h8 class="price">S${{ data[2] }}</h8>
+											<h7 class="price">S${{ data[2] }}</h7>
 											<p>Buy <input type="checkbox" name="product" value="{{ data[0] }}"></p>
 											<span class="text-warning"></span>
 									</div>

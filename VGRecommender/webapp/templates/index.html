@@ -12,7 +12,7 @@
     <title>Egames - Index Page</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href={{ url_for('static', filename="img/core-img/logo.ico") }}>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href={{ url_for('static', filename="style.css") }}>
@@ -71,13 +71,20 @@
                                     <li><a href="/">Home</a></li>
                                     <li><a href="best-sellers.html">Games</a>
                                         <ul class="dropdown">
-                                            <li><a href="best-sellers.html">Best Sellers</a></li>
+                                          <li><a href="/best-sellers.html">Best Sellers</a></li>
+                                          <li><a href="/xbox-360.html">Xbox 360</a></li>
+                                          <li><a href="/playstation-3.html">PlayStation 3</a></li>
+                                          <li><a href="/playstation-4.html">PlayStation 4</a></li>
+                                          <li><a href="/pc.html">PC</a></li>
+                                          <li><a href="/wii.html">Wii</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
+                        </div>
+                        <div class="top-social-info">
+                            <a href="https://github.com/samdarmali/GA-DSI-6/tree/master/VGRecommender" data-toggle="tooltip" data-placement="top" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a>
                         </div>
                     </nav>
                 </div>
@@ -99,8 +106,7 @@
                         <div class="col-12 col-lg-9">
                             <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
                                 <h2 data-animation="fadeInUp" data-delay="400ms">What?</h2>
-                                <p data-animation="fadeInUp" data-delay="700ms">This is mock online marketplace for video games is part of my deployment phase for my Capstone Project at General Assembly: Data Science Immersive.</p>
-                                <p><a href="best-sellers.html">View Project on Github</a></p>
+                                <p data-animation="fadeInUp" data-delay="700ms">This is mock online marketplace for video games is part of my deployment phase for my Capstone Project for the Data Science Immersive at General Assembly. If you would like to view this project on Github, please click the Github logo on the top right of the page.</p>
                             </div>
                         </div>
                     </div>
@@ -164,7 +170,7 @@
                 <div class="col-12 col-md-4">
                     <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <img src={{ url_for('static', filename="img/bg-img/game1.jpg") }} alt="">
-                        <a href="#" class="btn egames-btn mt-30">View Games</a>
+                        <a href="playstation-4.html" class="btn egames-btn mt-30">View Games</a>
                     </div>
                 </div>
 
@@ -172,7 +178,7 @@
                 <div class="col-12 col-md-4">
                     <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="300ms">
                         <img src={{ url_for('static', filename="img/bg-img/game2.jpg") }} alt="">
-                        <a href="#" class="btn egames-btn mt-30">View Games</a>
+                        <a href="wii.html" class="btn egames-btn mt-30">View Games</a>
                     </div>
                 </div>
 
@@ -180,7 +186,7 @@
                 <div class="col-12 col-md-4">
                     <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
                         <img src={{ url_for('static', filename="img/bg-img/game3.jpg") }} alt="">
-                        <a href="#" class="btn egames-btn mt-30">View Games</a>
+                        <a href="xbox-360.html" class="btn egames-btn mt-30">View Games</a>
                     </div>
                 </div>
             </div>

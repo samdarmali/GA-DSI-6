@@ -14,7 +14,7 @@ import numpy as np
 ''' ------- RECOMMENDER CLASS ------- '''
 class Recommender():
 
-    def __init__(self, dataset):
+    def __init__(self, dataset, new_products):
         '''
         Class which returns recommendations to a new customer.
         Initializes training data based on a full dataset.
@@ -32,45 +32,51 @@ class Recommender():
 
         (for more information, see Surprise_CF.ipynb)
         '''
-        self.dataset = dataset
-        self.ii_algo = KNNBaseline(k=21, sim_options={'name': 'pearson', 'user_based': False})
-        self.uu_algo = KNNWithMeans(k=12, sim_options={'name': 'pearson', 'user_based': True})
+        self.new_products = new_products
 
-    def new_recommendations(self, new_products):
+        # Append new customer to data
+        new_data = pd.DataFrame({'customer_id':[1]*len(self.new_products),
+                                 'product_id': self.new_products,
+                                 'star_rating':[5]*len(self.new_products)})
+        full_data = pd.concat([new_data, dataset]).reset_index(drop=True)
+        data = Dataset.load_from_df(full_data[['customer_id', 'product_id', 'star_rating']], Reader(rating_scale=(1, 5)))
+
+        self.unique_products = dataset['product_id'].unique()
+        self.trainset = data.build_full_trainset()
+        self.ii_algo = KNNBaseline(k=21, sim_options={'name': 'pearson', 'user_based': False})
+        self.uu_algo = KNNBaseline(k=99, sim_options={'name': 'msd', 'user_based': True})#KNNWithMeans(k=12, sim_options={'name': 'pearson', 'user_based': True})
+
+    def new_recommendations(self):
         '''
         Function that takes in a list of new products and returns recommendations.
 
         Arguments:
         - new_products   :  list of products chosen by new user
         - orig_data      :  original dataframe of users, items and ratings
+        - algo           :  algorithm for predicting ratings
 
         Returns:
         - recs_df        :  dataframe of recommendations
         '''
-        # Append new customer to data
-        new_data = pd.DataFrame({'customer_id':[1]*len(new_products),
-                                 'product_title':new_products,
-                                 'star_rating':[5]*len(new_products)})
-        full_data = pd.concat([new_data, self.dataset]).reset_index(drop=True)
 
-        # Build dataset
-        reader = Reader(rating_scale=(1, 5))
-        data = Dataset.load_from_df(full_data[['customer_id', 'product_title', 'star_rating']], reader)
-        trainset = data.build_full_trainset()
+        # Train recommender systems
+        self.ii_algo.fit(self.trainset)
+        self.uu_algo.fit(self.trainset)
 
-        # Train model
-        self.ii_algo.fit(trainset)
+        recommendations = {'items': [], 'ii_rating': [], 'uu_rating': []}
+        for item in self.unique_products:
+            if item not in self.new_products:
+                ii_rating = self.ii_algo.predict(1, item, verbose=False)[3]
+                uu_rating = self.uu_algo.predict(1, item, verbose=False)[3]
+                recommendations['items'].append(item)
+                recommendations['ii_rating'].append(ii_rating)
+                recommendations['uu_rating'].append(uu_rating)
+        recs_df = pd.DataFrame(recommendations)
+        ii_recs = recs_df.sort_values(by='ii_rating', ascending=False).head(10)['items']
+        uu_recs = recs_df.sort_values(by='uu_rating', ascending=False).head(10)['items']
 
-        # Make recommendations
-        recommendations = {'items': [], 'rating': []}
-        for item in self.dataset['product_title'].unique():
-            rating = self.ii_algo.predict(1, item, verbose=False)[3]
-            recommendations['items'].append(item)
-            recommendations['rating'].append(rating)
-        recs_df = pd.DataFrame(recommendations).sort_values(by='rating', ascending=False)
-        recs = recs_df.head(15)['items']
+        return ii_recs, uu_recs
 
-        return recs
 ''' ------- RECOMMENDER CLASS END------- '''
 
 
@@ -78,10 +84,11 @@ class Recommender():
 sqlite_db = '../datasets/amzn_vg_clean.db'
 conn = sqlite3.connect(sqlite_db)
 query = '''
-SELECT "customer_id", "product_title", "star_rating"
-FROM video_games
+SELECT "customer_id", "product_id", "star_rating"
+FROM full_dataset
 '''
 dataset = pd.read_sql(query, con=conn)
+print(dataset.shape)
 ''' ------- READ IN DATA END ------- '''
 
 
@@ -92,7 +99,6 @@ app = Flask(__name__)
 def homepage():
     return render_template('index.html')
 
-
 @app.route('/best-sellers.html/')
 def best_sellers_page():
     with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
@@ -101,18 +107,59 @@ def best_sellers_page():
         itemData = cur.fetchall()
     return render_template('best-sellers.html', itemData=itemData)
 
+@app.route('/xbox-360.html/')
+def xbox_360_page():
+    with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM products WHERE category = "Xbox 360"')
+        itemData = cur.fetchall()
+    return render_template('xbox-360.html', itemData=itemData)
+
+@app.route('/playstation-3.html/')
+def playstation3_page():
+    with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM products WHERE category = "PlayStation 3"')
+        itemData = cur.fetchall()
+    return render_template('playstation-3.html', itemData=itemData)
+
+@app.route('/playstation-4.html/')
+def playstation4_page():
+    with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM products WHERE category = "PlayStation 4"')
+        itemData = cur.fetchall()
+    return render_template('playstation-4.html', itemData=itemData)
+
+@app.route('/wii.html/')
+def wii_page():
+    with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM products WHERE category = "Wii"')
+        itemData = cur.fetchall()
+    return render_template('wii.html', itemData=itemData)
+
+@app.route('/pc.html/')
+def pc_page():
+    with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM products WHERE category = "PC"')
+        itemData = cur.fetchall()
+    return render_template('pc.html', itemData=itemData)
+
 
 @app.route('/result', methods=['POST', 'GET'])
 def result():
     '''Gets prediction using the HTML form'''
     if request.method == 'POST':
 
-        recommender = Recommender(dataset)
-
         selections = request.form.getlist('product')
         print(selections)
 
-        recs = recommender.new_recommendations(selections)
+        recommender = Recommender(dataset, selections)
+        ii_recs, uu_recs = recommender.new_recommendations()
+        print(ii_recs)
+        print(uu_recs)
 
         selected_list = []
         for id in selections:
@@ -122,15 +169,23 @@ def result():
                 cur.execute(full_query)
                 selected_list.extend(cur.fetchall())
 
-        recommended_list = []
-        for name in recs:
+        ii_recommended_list = []
+        for name in ii_recs:
             with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
-                full_query = 'SELECT * FROM products WHERE product_title = "{}"'.format(name)
+                full_query = 'SELECT * FROM products WHERE product_id = "{}"'.format(name)
                 cur = conn.cursor()
                 cur.execute(full_query)
-                recommended_list.extend(cur.fetchall())
+                ii_recommended_list.extend(cur.fetchall())
 
-        return render_template('results.html', selections=selections, recs=recs, selected_list=selected_list, recommended_list=recommended_list)
+        uu_recommended_list = []
+        for name in uu_recs:
+            with sqlite3.connect('../datasets/amzn_vg_clean.db') as conn:
+                full_query = 'SELECT * FROM products WHERE product_id = "{}"'.format(name)
+                cur = conn.cursor()
+                cur.execute(full_query)
+                uu_recommended_list.extend(cur.fetchall())
+
+        return render_template('results.html', selections=selections, selected_list=selected_list, ii_recommended_list=ii_recommended_list, uu_recommended_list=uu_recommended_list)
 
 
 if __name__ == '__main__':
