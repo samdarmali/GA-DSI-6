@@ -26,9 +26,14 @@ I used data from the Registry of Open Data on AWS (found [here](https://registry
 
 8. [Webapp](https://github.com/samdarmali/GA-DSI-6/tree/master/VGRecommender/webapp) - This folder holds the front-end html and css files for the website and the flask backend file. However, due to the large size of the data, it is not in this repository. Hosting this webapp publicly is still in progress, but here are some screenshots of the webapp hosted locally.
 
-![alt text](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot1.png)
-![alt text](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot2.png)
-![alt text](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot3.png)
+Landing Page - Brief intro to project and how to use the webapp.
+![Landing Page](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot1.png)
+
+Games Page - User chooses which games they like.
+![Games Page](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot2.png)
+
+Recommendations Page - Recommender system provides recommendations based on what user has chosen.
+![Recommendations Page](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot3.png)
 
 9. [Presentation](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/Presentation.pdf) - This pdf file shows the final presentation given at the end of the course, outlining the purpose of the project, methodology, scoring metrics, results and further actions to be taken.
 
