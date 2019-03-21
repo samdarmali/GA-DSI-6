@@ -24,9 +24,11 @@ I used data from the Registry of Open Data on AWS (found [here](https://registry
 
 7. [Surprise MF](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/Surprise_MF.ipynb) - This notebook tested the different parameters to find the optimal matrix factorisation model (SVD & SVD++). Althought matrix factorisation was more effective at lowering root mean squared error of predictions, it remained poor in achieving good scores on on precision and mean average precision. The best matrix factorisation model was selected from this notebook but not used in the deployment stage.
 
-8. [Webapp](https://github.com/samdarmali/GA-DSI-6/tree/master/VGRecommender/webapp) - This folder holds the front-end html and css files for the website and the flask backend file. However, due to the large size of the data, it is not in this repository. Hosting this webapp publicly is still in progress.
+8. [Webapp](https://github.com/samdarmali/GA-DSI-6/tree/master/VGRecommender/webapp) - This folder holds the front-end html and css files for the website and the flask backend file. However, due to the large size of the data, it is not in this repository. Hosting this webapp publicly is still in progress, but here are some screenshots of the webapp hosted locally.
 
 ![alt text](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot1.png)
+![alt text](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot2.png)
+![alt text](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/screenshots/screenshot3.png)
 
 9. [Presentation](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/Presentation.pdf) - This pdf file shows the final presentation given at the end of the course, outlining the purpose of the project, methodology, scoring metrics, results and further actions to be taken.
 
