@@ -1,6 +1,14 @@
 # Capstone Project - Video Games Recommender System
 
-## Overview
+## So Why a Recommender System? (The Business Problem)
+
+E-commerce companies today have large catalogues of products, many of which go unnoticed by consumers. Building an effective recommender system improves the consumer experience by helping them discover products that they end up loving and would not have otherwise found. This in turn leads to higher conversion rates, increased revenue and business growth.
+
+## The Data
+
+I used data from the Registry of Open Data on AWS (found [here](https://registry.opendata.aws/amazon-reviews/)).
+
+## Overview of Files
 
 1. [EDA](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/EDA.ipynb) - Reading in data, cleaning the data, drawing initial insights from the data before modelling.
 
@@ -16,5 +24,7 @@
 
 7. [Surprise MF](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/Surprise_MF.ipynb) - This notebook tested the different parameters to find the optimal matrix factorisation model (SVD & SVD++). Althought matrix factorisation was more effective at lowering root mean squared error of predictions, it remained poor in achieving good scores on on precision and mean average precision. The best matrix factorisation model was selected from this notebook but not used in the deployment stage.
 
-8. [Webapp](https://github.com/samdarmali/GA-DSI-6/tree/master/VGRecommender/webapp) - This folder holds the front-end html and css files for the website and the flask backend file. However, due to the large size of the data, it is not in this repository. Hosting this webapp publicly is still in progress...
+8. [Webapp](https://github.com/samdarmali/GA-DSI-6/tree/master/VGRecommender/webapp) - This folder holds the front-end html and css files for the website and the flask backend file. However, due to the large size of the data, it is not in this repository. Hosting this webapp publicly is still in progress.
+
+9. [Presentation](https://github.com/samdarmali/GA-DSI-6/blob/master/VGRecommender/Presentation.pdf) - This pdf file shows the final presentation given at the end of the course, outlining the purpose of the project, methodology, scoring metrics, results and further actions to be taken.
 
